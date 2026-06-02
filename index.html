@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thời tiết và giờ toàn cầu</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+4xMPRkO6Dg4R6RT6445gS6VbUe5s9b6NDfEfyUqM=" crossorigin="" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <h1>Thời tiết &amp; giờ toàn cầu</h1>
+        <p>Xem trạng thái thời tiết, giờ địa phương, danh sách thành phố và bản đồ vị trí.</p>
+      </div>
+    </header>
+
+    <section class="search-panel">
+      <form id="location-form">
+        <label for="location-input">Nhập thành phố hoặc thành phố, quốc gia</label>
+        <input id="location-input" type="text" placeholder="Ví dụ: Hanoi, Vietnam hoặc Tokyo" required />
+        <button type="submit">Tìm</button>
+      </form>
+
+      <div class="presets" id="preset-buttons">
+        <button type="button" data-city="Hanoi" data-country="Vietnam">Hà Nội</button>
+        <button type="button" data-city="Tokyo" data-country="Japan">Tokyo</button>
+        <button type="button" data-city="London" data-country="United Kingdom">London</button>
+        <button type="button" data-city="New York" data-country="USA">New York</button>
+        <button type="button" data-city="Sydney" data-country="Australia">Sydney</button>
+      </div>
+    </section>
+
+    <section class="city-library">
+      <div class="library-header">
+        <h2>Danh sách thành phố toàn cầu</h2>
+        <p>Nhấn vào thành phố để xem thời tiết, giờ và vị trí trên bản đồ.</p>
+      </div>
+      <div class="city-grid">
+        <button class="city-button" type="button" data-city="Paris" data-country="France">Paris</button>
+        <button class="city-button" type="button" data-city="Moscow" data-country="Russia">Moscow</button>
+        <button class="city-button" type="button" data-city="Cairo" data-country="Egypt">Cairo</button>
+        <button class="city-button" type="button" data-city="Rio de Janeiro" data-country="Brazil">Rio de Janeiro</button>
+        <button class="city-button" type="button" data-city="Cape Town" data-country="South Africa">Cape Town</button>
+        <button class="city-button" type="button" data-city="Dubai" data-country="United Arab Emirates">Dubai</button>
+        <button class="city-button" type="button" data-city="Singapore" data-country="Singapore">Singapore</button>
+        <button class="city-button" type="button" data-city="Los Angeles" data-country="USA">Los Angeles</button>
+        <button class="city-button" type="button" data-city="Mumbai" data-country="India">Mumbai</button>
+        <button class="city-button" type="button" data-city="Buenos Aires" data-country="Argentina">Buenos Aires</button>
+        <button class="city-button" type="button" data-city="Toronto" data-country="Canada">Toronto</button>
+        <button class="city-button" type="button" data-city="Bangkok" data-country="Thailand">Bangkok</button>
+        <button class="city-button" type="button" data-city="Shanghai" data-country="China">Shanghai</button>
+        <button class="city-button" type="button" data-city="Berlin" data-country="Germany">Berlin</button>
+        <button class="city-button" type="button" data-city="Madrid" data-country="Spain">Madrid</button>
+      </div>
+    </section>
+
+    <section class="status-panel" id="status-panel" aria-live="polite"></section>
+
+    <section class="result-grid">
+      <article class="card" id="weather-card">
+        <h2>Thời tiết hiện tại</h2>
+        <div class="card-content" id="weather-content">
+          <p>Nhập thành phố hoặc chọn thành phố từ danh sách để xem thời tiết ngay.</p>
+        </div>
+      </article>
+
+      <article class="card" id="time-card">
+        <h2>Giờ địa phương</h2>
+        <div class="card-content" id="time-content">
+          <p>Giờ sẽ cập nhật sau khi bạn chọn thành phố.</p>
+        </div>
+      </article>
+
+      <article class="card map-card" id="map-card">
+        <h2>Bản đồ vị trí</h2>
+        <div id="map"></div>
+        <p class="map-caption" id="map-caption">Chọn thành phố để hiển thị vị trí.</p>
+      </article>
+
+      <article class="card forecast-card" id="forecast-card">
+        <h2>Dự báo 7 ngày</h2>
+        <div class="forecast-grid" id="forecast-content">
+          <p>Thông tin dự báo sẽ xuất hiện sau khi tìm kiếm.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-oR0KQLfkmJ7n9JxydFZ4RJd1PwLTZA9jVpgc29SL+g0=" crossorigin=""></script>
+  <script src="weather.js" defer></script>
+</body>
+</html>
